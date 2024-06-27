@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival in the Wild</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        #messageForm {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #messageList {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        #messages {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #messages li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Survival in the Wild</h1>
+        <nav>
+            <a onclick="showPage('home')">Home</a> |
+            <a onclick="showPage('news')">News</a> |
+            <a onclick="showPage('about')">About</a> |
+            <a onclick="showPage('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <div id="home" class="page active">
+        <div id="messageForm">
+            <label for="message">Enter Message:</label><br>
+            <input type="text" id="message" name="message" style="font-size: 18px;"><br>
+            <button onclick="sendMessage()">Send Message</button>
+        </div>
+
+        <div id="messageList">
+            <h2>Messages:</h2>
+            <ul id="messages">
+                <!-- Messages will be displayed here -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="news" class="page">
+        <h2>News</h2>
+        <p>Latest news about the game will appear here.</p>
+    </div>
+
+    <div id="about" class="page">
+        <h2>About</h2>
+        <p>Welcome to "Survival in the Wild". This game is an exciting adventure that takes you to the depths of untouched forests and towering mountains, where you must survive using your skills and strategies. Prepare for the challenges of the wild nature, search for resources, build a shelter, and face wild creatures. Join us on this thrilling journey and be part of the real survival world.</p>
+    </div>
+
+    <div id="contact" class="page">
+        <h2>Contact</h2>
+        <p>To contact us, you can send an email to: <a href="mailto:abashamax@gmail.com">abashamax@gmail.com</a></p>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            var pages = document.querySelectorAll('.page');
+            pages.forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            var activePage = document.getElementById(pageId);
+            activePage.classList.add('active');
+        }
+
+        function sendMessage() {
+            var messageInput = document.getElementById('message');
+            var message = messageInput.value;
+
+            var messagesList = document.getElementById('messages');
+            var listItem = document.createElement('li');
+            listItem.textContent = message;
+            messagesList.appendChild(listItem);
+
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
